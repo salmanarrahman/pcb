@@ -1,18 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { AiOutlineSearch, AiOutlineBars } from "react-icons/ai";
-import {
-  BsFillCpuFill,
-  BsFillMotherboardFill,
-  BsBuildingAdd,
-} from "react-icons/bs";
-import { CgSmartphoneRam } from "react-icons/cg";
-import { ImPower } from "react-icons/im";
-import { FiMonitor } from "react-icons/fi";
+import { AiOutlineBars } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
-import { LuHardDrive } from "react-icons/lu";
-import { useSession, signOut } from "next-auth/react";
 
 const Navbar = () => {
   const [openCategory, setOpenCategory] = useState(false);
@@ -23,92 +12,48 @@ const Navbar = () => {
       id: 1,
       name: "CPU/Processor",
       link: "/products?category=CPU/Processor",
-      logo: <BsFillCpuFill />,
     },
     {
       id: 2,
       name: "Motherboard",
       link: "/products?category=Motherboard",
-      logo: <BsFillMotherboardFill />,
     },
     {
       id: 3,
       name: "RAM",
       link: "/products?category=RAM",
-      logo: <CgSmartphoneRam />,
     },
     {
       id: 4,
       name: "Power Supply Unit",
       link: "/products?category=Power Supply Unit",
-      logo: <ImPower />,
     },
     {
       id: 5,
       name: "Storage Device",
       link: "/products?category=Storage Device",
-      logo: <LuHardDrive />,
     },
     {
       id: 6,
       name: "Monitor",
       link: "/products?category=Monitor",
-      logo: <FiMonitor />,
     },
     {
       id: 7,
       name: "Other",
       link: "/products?category=Other",
-      logo: <BsBuildingAdd />,
     },
   ];
 
   return (
-    <header className="bg-white relative shadow-md z-50">
+    <header className="bg-white relative  z-50">
       <nav className="mx-auto  max-w-7xl">
         <div
           className=" hidden lg:flex mx-2 items-center justify-between pt-4"
           aria-label="Global"
         >
-          <div className="flex lg:flex-1">
-            <Link href="/" className="-m-1.5 p-1.5">
-              <div className={""}>
-                <Image src="/logo.jpg" alt="Logo" height={30} width={150} />
-              </div>
-            </Link>
-          </div>
-
           <div className="hidden lg:flex justify-end items-center">
-            <div className="relative mr-6 rounded-md shadow-sm">
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 ">
-                <span className="text-gray-500 sm:text-sm">
-                  <AiOutlineSearch />
-                </span>
-              </div>
-              <input
-                type="text"
-                name="price"
-                id="price"
-                className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Search..."
-              />
-            </div>
-
-            {/* {session?.user.email ? (
-              <button
-                onClick={() => signOut()}
-                className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-              >
-                Log Out <span aria-hidden="true">&rarr;</span>
-              </button>
-            ) : (
-              <Link
-                href="/login"
-                className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-              >
-                Log in <span aria-hidden="true">&rarr;</span>
-              </Link>
-            )} */}
+            <div className="relative mr-6 rounded-md shadow-sm"></div>
           </div>
         </div>
 
@@ -151,15 +96,12 @@ const Navbar = () => {
               >
                 <div className="p-4">
                   {categories?.map((category) => {
-                    const { id, name, link, logo } = category || {};
+                    const { id, name, link } = category || {};
                     return (
                       <div
                         key={id}
                         className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
                       >
-                        <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white text-xl">
-                          {logo}
-                        </div>
                         <div className="flex-auto">
                           <Link
                             href={link}
@@ -168,9 +110,6 @@ const Navbar = () => {
                             {name}
                             <span className="absolute inset-0"></span>
                           </Link>
-                          <p className="mt-1 text-gray-600">
-                            Get a better understanding of your traffic
-                          </p>
                         </div>
                       </div>
                     );
@@ -185,18 +124,6 @@ const Navbar = () => {
             >
               Products
             </Link>
-            <Link
-              href="/"
-              className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-            >
-              Marketplace
-            </Link>
-            <Link
-              href="/"
-              className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-            >
-              Company
-            </Link>
           </div>
 
           <div>
@@ -209,7 +136,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* <!-- Mobile menu, show/hide based on menu open state. --> */}
       <div className="lg:hidden">
         <div
           className={`${
@@ -217,12 +143,6 @@ const Navbar = () => {
           } w-full overflow-y-auto bg-white -mt-3 shadow-md`}
         >
           <div className="flex items-center justify-between px-6 py-3 h-[10vh] ">
-            <Link href="/">
-              <div className={""}>
-                <Image src="/logo.jpg" alt="Logo" height={30} width={150} />
-              </div>
-            </Link>
-
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
@@ -298,21 +218,6 @@ const Navbar = () => {
                   >
                     Products
                   </Link>
-                  <Link
-                    href="/"
-                    onClick={() => setOpenMenu(false)}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    Marketplace
-                  </Link>
-
-                  <Link
-                    href="/"
-                    onClick={() => setOpenMenu(false)}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    Company
-                  </Link>
 
                   <div>
                     <Link href={"/pcb"} onClick={() => setOpenMenu(false)}>
@@ -322,24 +227,6 @@ const Navbar = () => {
                     </Link>
                   </div>
                 </div>
-
-                {/* <div className="py-6 flex justify-center items-center">
-                  {session?.user.email ? (
-                    <button
-                      onClick={() => signOut()}
-                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >
-                      Log Out <span aria-hidden="true">&rarr;</span>
-                    </button>
-                  ) : (
-                    <Link
-                      href="/login"
-                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >
-                      Log in <span aria-hidden="true">&rarr;</span>
-                    </Link>
-                  )}
-                </div> */}
               </div>
             </div>
           </div>

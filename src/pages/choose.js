@@ -11,11 +11,12 @@ const Choose = ({ products }) => {
   const router = useRouter();
 
   const dispatch = useDispatch();
+  console.log(products);
 
   const productAddedHandelar = (productInfo) => {
     dispatch(addToBuilder(productInfo));
 
-    router.push("/pc_builder");
+    router.push("/pcb");
   };
 
   return (
@@ -91,7 +92,7 @@ export async function getServerSideProps(context) {
   const category = query.category;
 
   try {
-    const res = await fetch(`${process.env.URL}/?category=cpu${category}`);
+    const res = await fetch(`${process.env.URL}?category=${category}`);
     if (!res.ok) {
       throw new Error("Fetch failed");
     }
@@ -99,7 +100,7 @@ export async function getServerSideProps(context) {
 
     return {
       props: {
-        products: productsRes?.data,
+        products: productsRes,
       },
     };
   } catch (error) {

@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="relative">
-      <div className="group relative border px-3 lg:h-[400px]">
+      <div className="group relative lg:h-[400px]">
         <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md  lg:aspect-none group-hover:opacity-75 p-6 ">
           <Image
             src={images}

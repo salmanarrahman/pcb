@@ -86,7 +86,7 @@ const CategoryComponent = ({ category }) => {
             <p className="text-2xl font-bold p-2 my-2 text-[#EE4B23]">
               {addedComponent?.Price}
             </p>
-            <div className="m-2 flex justify-center items-center text-2xl">
+            {/* <div className="m-2 flex justify-center items-center text-2xl">
               <button
                 onClick={componentRemoveHandelar}
                 className="p-2 mx-3 bg-gray-100 rounded-md "
@@ -99,7 +99,7 @@ const CategoryComponent = ({ category }) => {
                   <BsArrowRepeat />
                 </button>
               </Link>
-            </div>
+            </div> */}
           </div>
         )}
       </div>

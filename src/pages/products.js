@@ -61,7 +61,7 @@ const Products = ({ productsRes }) => {
     },
   ];
 
-  const products = productsRes?.data;
+  const products = productsRes;
 
   return (
     <>
@@ -70,7 +70,7 @@ const Products = ({ productsRes }) => {
       </Head>
       <section>
         <div className="mx-auto  max-w-7xl my-14">
-          <div className="text-center">
+          <div className="">
             <h2 className="text-2xl font-bold p-1">Featured Category</h2>
             <p>Get Your Desired Product from Featured Category!</p>
           </div>
@@ -96,13 +96,6 @@ const Products = ({ productsRes }) => {
                 </button>
               );
             })}
-          </div>
-
-          <div className="mt-10 px-2">
-            <div className="flex justify-between items-center bg-black p-2 text-white font-semibold rounded-md px-4">
-              <p>Categorise of {"searchQuery"}</p>
-              <p>Showing 1 to 20 of 20 (1Page)</p>
-            </div>
           </div>
 
           <div className="bg-white">

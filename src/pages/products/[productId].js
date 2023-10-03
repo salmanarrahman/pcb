@@ -1,6 +1,5 @@
 import Description from "@/components/Description";
 import RelatedProduct from "@/components/RelatedProduct";
-import Review from "@/components/Review";
 import Specification from "@/components/Specification";
 import Head from "next/head";
 import Image from "next/image";
@@ -50,21 +49,13 @@ const ProductDetails = ({ product }) => {
             <div className="lg:my-14">
               <h2 className="text-2xl font-semibold">{name}</h2>
               <div className="flex justify-start items-center my-2 text-sm flex-wrap">
-                <p className="bg-gray-100 py-1 px-3 m-1 rounded-full">
-                  Price: {Price}
-                </p>
-                <p className="bg-gray-100 py-1 px-3 m-1 rounded-full">
-                  <del> Regular Price: {regularPrice}</del>
-                </p>
-                <p className="bg-gray-100 py-1 px-3 m-1 rounded-full">
-                  Status: {Status}
-                </p>
-                <p className="bg-gray-100 py-1 px-3 m-1 rounded-full">
+                <p className="bg-gray-100 py-1 px-3 m-1 ">Price: {Price}</p>
+                <p className="bg-gray-100 py-1 px-3 m-1 "></p>
+                <p className="bg-gray-100 py-1 px-3 m-1 ">Status: {Status}</p>
+                <p className="bg-gray-100 py-1 px-3 m-1 ">
                   Product Code: {productCode}
                 </p>
-                <p className="bg-gray-100 py-1 px-3 m-1 rounded-full">
-                  Brand: {Brand}
-                </p>
+                <p className="bg-gray-100 py-1 px-3 m-1 ">Brand: {Brand}</p>
               </div>
 
               <div className="flex justify-start items-center font-bold">
@@ -107,26 +98,10 @@ const ProductDetails = ({ product }) => {
         </section>
 
         <section className="my-10 grid grid-cols-1 lg:grid-cols-4 gap-4">
-          <div className="col-span-3 ">
+          <div className="col-span-6 ">
             <Specification specification={specification} />
 
             <Description description={description} />
-
-            <Review productId={id} />
-          </div>
-
-          <div className="rounded-md ">
-            <div className=" mx-3">
-              <h3 className="text-center text-2xl font-semibold p-2">
-                Related Product
-              </h3>
-
-              <div className="">
-                {related?.map((product, i) => (
-                  <RelatedProduct key={i} product={product} />
-                ))}
-              </div>
-            </div>
           </div>
         </section>
       </main>
@@ -141,7 +116,7 @@ export async function getStaticPaths() {
     const res = await fetch(`${process.env.URL}`);
     const productsRes = await res.json();
 
-    const productIds = productsRes?.data?.map((product) => ({
+    const productIds = productsRes?.map((product) => ({
       params: { productId: product.id.toString() },
     }));
 
@@ -172,7 +147,7 @@ export async function getStaticProps({ params }) {
 
     return {
       props: {
-        product: product?.data,
+        product: product,
       },
       revalidate: 60,
     };

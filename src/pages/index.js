@@ -1,19 +1,18 @@
 import { Inter } from "next/font/google";
-import HeroSection from "@/components/HeroSection";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ productsRes }) {
+  console.log(productsRes);
   return (
     <>
       <Head>
         <title>PC Builder | Build Your Dream PC</title>
       </Head>
       <main className={`${inter.className}`}>
-        <HeroSection />
-        <FeaturedProducts products={productsRes?.data} />
+        <FeaturedProducts products={productsRes} />
       </main>
     </>
   );
@@ -25,6 +24,8 @@ export async function getStaticProps() {
     if (!res.ok) {
       throw new Error("Fetch failed");
     }
+
+    console.log(res.message);
     const productsRes = await res.json();
 
     return {

@@ -6,7 +6,7 @@ const FeaturedProducts = ({ products }) => {
   return (
     <section>
       <div className="mx-auto  max-w-7xl my-14">
-        <div className="text-center">
+        <div className="">
           <h2 className="text-2xl font-bold p-1">Featured Products</h2>
           <p>Check & Get Your Desired Product!</p>
         </div>
