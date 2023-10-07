@@ -12,9 +12,7 @@ const PcBuildHeader = () => {
 
   return (
     <div className="flex justify-between bg-white p-3 border-b">
-      <h2 className="p-3 text-xl font-semibold text-center  ">
-        PC Builder - Build Your Own Computer - Star Tech
-      </h2>
+      <h2 className="p-3 text-xl font-semibold text-center  ">PC builder</h2>
 
       <div>
         <button className="py-2 px-12 text-white bg-black rounded-md flex justify-center items-center flex-col">
